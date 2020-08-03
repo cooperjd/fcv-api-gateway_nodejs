@@ -1,0 +1,136 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #eee;
+}
+
+h1 {
+    text-align: center;
+}
+
+label {
+    font-weight: bold;
+}
+
+.header {
+    margin: 1em;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1em;
+}
+
+.service {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: #ccc;
+    padding: 1em;
+    margin: 0.5em 0;
+}
+
+.service-header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid #000;
+    margin-bottom: 10px;
+}
+
+.service-header a {
+    align-self: center;
+    font-weight: lighter;
+    background-color: #eee;
+    padding: 2px 10px;
+    border: 1px solid #bbb;
+    border-radius: 3px;
+    outline: none;
+}
+
+.service-header a:hover {
+    cursor: pointer;
+    transition: 0.5s background-color;
+    background-color: #ddd;
+}
+
+.service-name {
+    font-size: 20pt;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.service-info {
+    display: flex;
+}
+
+.service-info div {
+    padding-left: 1em;
+}
+
+.instance-list{
+    margin-top: 5px;
+    margin-bottom: 1em;
+    max-height: 200px;
+    overflow: scroll;
+    background-color: #eee;
+}
+
+.instance {
+    padding: 1em;
+    border-bottom: 1px inset #000;
+}
+
+.instance:nth-child(even){
+    background-color: #ddd;
+}
+
+.instance-info {
+    display: flex;
+}
+
+.instance-info div {
+    padding-left: 1em;
+}
+
+.btn-group {
+    padding: 0.5em 0;
+}
+
+.btn-group a {
+    align-self: center;
+    font-weight: lighter;
+    background-color: #eee;
+    padding: 2px 10px;
+    border: 1px solid #bbb;
+    border-radius: 3px;
+    outline: none;
+}
+
+.btn-group a:hover {
+    cursor: pointer;
+    transition: 0.5s background-color;
+    background-color: #ddd;
+}
+
+.success {
+    color: green;
+}
+
+.error {
+    color: red;
+}
+
+@media only screen and (max-width: 720px) {
+    .container {
+        width: 95%;
+        margin: auto;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1em;
+    }
+}

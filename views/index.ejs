@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <title>FCV API Gateway</title>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Registered Services</h1>
+    </div>
+    <div class="container" id="main-container">
+        <% for(let i = 0; i < serviceNames.length; i++) { %>
+        <div class="service">
+            <div class="service-header">
+                <div class="service-name"><%= serviceNames[i] %></div>
+                <% const serviceEnableBtnText = registeredServices[serviceNames[i]].enabled ? 'Disable' : 'Enable'%>
+                <a serviceName="<%= serviceNames[i] %>" onclick="toggleService(event)"><%= serviceEnableBtnText %></a>
+            </div>
+            <div class="service-info">
+                <label for="loadBalanceStrategy">Load Balance Strategy: </label>
+                <div name="loadBalanceStrategy"><%= registeredServices[serviceNames[i]].loadBalanceStrategy %></div>
+            </div>
+            <div class="service-info">
+                <label for="enabled">Enabled: </label>
+                <% let serviceEnabledClass = registeredServices[serviceNames[i]].enabled ? 'success' : 'error' %>
+                <div name="enabled" class="<%= serviceEnabledClass %>"><%= registeredServices[serviceNames[i]].enabled %></div>
+            </div>
+
+            <label class="instances-label">Instances:</label>
+            <div class="instance-list">
+                <% for(let j = 0; j < registeredServices[serviceNames[i]].instances.length; j++) { %>
+                <div class="instance">
+                    <div class="instance-info">
+                        <label for="host">Host:</label>
+                        <div name="host"><%= registeredServices[serviceNames[i]].instances[j].host %></div>
+                    </div>
+                    <div class="instance-info">
+                        <label for="port">Port:</label>
+                        <div name="port"><%= registeredServices[serviceNames[i]].instances[j].port %></div>
+                    </div>
+                    <div class="instance-info">
+                        <label for="enabled">Enabled:</label>
+                        <% let instanceEnabledClass = registeredServices[serviceNames[i]].instances[j].enabled ? 'success' : 'error' %>
+                        <div name="enabled" class="<%= instanceEnabledClass %>">
+                            <%= registeredServices[serviceNames[i]].instances[j].enabled %></div>
+                    </div>
+                    <div class="btn-group">
+                        <% const InstanceEnablebtnText = registeredServices[serviceNames[i]].instances[j].enabled ? 'Disable' : 'Enable' %>
+                        <a serviceName="<%= serviceNames[i] %>" index="<%= j %>" onclick="toggleInstance(event)"><%= InstanceEnablebtnText %></a>
+                    </div>
+                </div>
+                <% } %>
+            </div>
+        </div>
+        <% } %>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
